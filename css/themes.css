@@ -1,0 +1,97 @@
+/* ==========================================================================
+   AHMED PORTFOLIO — COLOR THEMES
+   Switched instantly, site-wide, by setting data-theme on <html>.
+   The Admin Panel writes the chosen theme id to localStorage; a small
+   inline script in every page's <head> applies it before first paint.
+   ========================================================================== */
+
+/* ---------- 1. Charcoal Orange (default / original) ---------- */
+html[data-theme="charcoal-orange"] {
+  --bg: #0c0c0f;
+  --bg-rgb: 12, 12, 15;
+  --bg-alt: #131217;
+  --panel: #17161c;
+  --panel-2: #1d1c23;
+  --border: rgba(244, 242, 238, 0.08);
+  --border-strong: rgba(244, 242, 238, 0.16);
+  --orange: #ff5a1f;
+  --orange-soft: #ff8a4d;
+  --orange-rgb: 255, 90, 31;
+  --blue: #2ed3ff;
+  --blue-soft: #7ee6ff;
+  --blue-rgb: 46, 211, 255;
+  --text: #f4f2ee;
+  --text-muted: #a8a6b0;
+  --text-faint: #6d6b76;
+  --btn-text: #120c08;
+}
+
+/* ---------- 2. Midnight Blue ---------- */
+html[data-theme="midnight-blue"] {
+  --bg: #080b16;
+  --bg-rgb: 8, 11, 22;
+  --bg-alt: #0d1220;
+  --panel: #10162a;
+  --panel-2: #141b33;
+  --border: rgba(147, 179, 255, 0.10);
+  --border-strong: rgba(147, 179, 255, 0.20);
+  --orange: #3b82f6;
+  --orange-soft: #6ea8ff;
+  --orange-rgb: 59, 130, 246;
+  --blue: #7c5cff;
+  --blue-soft: #a78bfa;
+  --blue-rgb: 124, 92, 255;
+  --text: #eef2ff;
+  --text-muted: #9aa5c9;
+  --text-faint: #5f6a8f;
+  --btn-text: #060912;
+}
+
+/* ---------- 3. Slate Purple ---------- */
+html[data-theme="slate-purple"] {
+  --bg: #120f18;
+  --bg-rgb: 18, 15, 24;
+  --bg-alt: #17131f;
+  --panel: #1c1726;
+  --panel-2: #221c30;
+  --border: rgba(230, 220, 255, 0.09);
+  --border-strong: rgba(230, 220, 255, 0.18);
+  --orange: #a855f7;
+  --orange-soft: #c084fc;
+  --orange-rgb: 168, 85, 247;
+  --blue: #ff6ec7;
+  --blue-soft: #ff9ede;
+  --blue-rgb: 255, 110, 199;
+  --text: #f3eefc;
+  --text-muted: #a79bc0;
+  --text-faint: #6b6180;
+  --btn-text: #ffffff;
+}
+
+/* ---------- 4. Emerald Dark ---------- */
+html[data-theme="emerald-dark"] {
+  --bg: #08120e;
+  --bg-rgb: 8, 18, 14;
+  --bg-alt: #0c1712;
+  --panel: #101d17;
+  --panel-2: #14231c;
+  --border: rgba(220, 255, 240, 0.08);
+  --border-strong: rgba(220, 255, 240, 0.17);
+  --orange: #12e08a;
+  --orange-soft: #5eeab0;
+  --orange-rgb: 18, 224, 138;
+  --blue: #ffb020;
+  --blue-soft: #ffcf70;
+  --blue-rgb: 255, 176, 32;
+  --text: #eafff5;
+  --text-muted: #92b6a7;
+  --text-faint: #587867;
+  --btn-text: #062015;
+}
+
+/* Smooth color transition when a theme is switched live */
+body, .site-header, .stat-card, .service-card, .service-detail-card,
+.project-card, .testi-card, .award-card, .timeline-card, .contact-info,
+.contact-form, .cta-inner, .site-footer, .filter-tabs, .skill-track {
+  transition: background-color .5s ease, border-color .5s ease, color .5s ease;
+}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="charcoal-orange">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Admin Panel — Aamir Siddique Portfolio</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="css/admin.css">
+<script src="../js/store.js"></script>
+<script>
+  // Auth gate — runs before anything renders. Not logged in? bounce to login.
+  if (!AhmedStore.isLoggedIn()) { window.location.href = 'index.html'; }
+  AhmedStore.applyStoredTheme();
+</script>
+</head>
+<body class="admin-body">
+
+<div class="ambient" aria-hidden="true">
+  <span class="blob blob-orange blob-1"></span>
+  <span class="blob blob-blue blob-2"></span>
+  <span class="blob blob-orange blob-3"></span>
+</div>
+
+<div class="admin-mobile-bar">
+  <a href="../index.html" class="logo">AAMIR<span class="dot">.</span></a>
+  <button id="mobileSidebarToggle" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<div class="admin-sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="admin-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <a href="../index.html" class="logo">AAMIR<span class="dot">.</span></a>
+
+    <nav class="side-nav" id="sideNav">
+      <a data-target="panel-overview" class="active">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        Overview
+      </a>
+      <a data-target="panel-home">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 11l8-7 8 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9h12v-9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Home Page
+      </a>
+      <a data-target="panel-portfolio">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 15l4.5-4.5L11 14l4-4 6 6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Portfolio Projects
+      </a>
+      <a data-target="panel-about">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        About Page
+      </a>
+      <a data-target="panel-services">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+        Services &amp; Pricing
+      </a>
+      <a data-target="panel-awards">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Awards &amp; Achievements
+      </a>
+      <a data-target="panel-contact">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Contact &amp; Socials
+      </a>
+      <a data-target="panel-theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 000 17 4 4 0 010-8 3.2 3.2 0 000-6.4 4.3 4.3 0 01-.5-2.6z" fill="currentColor" opacity=".9"/></svg>
+        Theme
+      </a>
+      <a data-target="panel-security">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V7a4 4 0 018 0v3.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        Account Security
+      </a>
+    </nav>
+
+    <div class="side-foot">
+      <a href="../index.html" target="_blank">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        View Live Site
+      </a>
+      <a id="logoutBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Log Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="admin-main">
+
+    <!-- ---------- OVERVIEW ---------- -->
+    <section class="admin-panel active" id="panel-overview">
+      <div class="admin-topbar">
+        <div>
+          <h1>Welcome back, Aamir 👋</h1>
+          <p>Everything you edit here updates the live site immediately, in this browser.</p>
+        </div>
+        <a href="../index.html" target="_blank" class="view-site-btn">
+          View Live Site
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="admin-card">
+        <h2>How this Admin Panel works</h2>
+        <p class="card-desc" style="margin-bottom:16px;">A few things worth knowing before you start editing:</p>
+        <p style="color:var(--text-muted); font-size:.92rem; line-height:1.75; margin-bottom:14px;">
+          Every page on your site now pulls its text, images, services, awards, and portfolio projects from one shared content store instead of being hard-coded. When you save a change here, it's written to this browser's storage — and because every page reads from that same storage, your change appears the moment you open or refresh any page, no re-uploading needed.
+        </p>
+        <p style="color:var(--text-muted); font-size:.92rem; line-height:1.75;">
+          The one thing to remember: this storage lives in <strong style="color:var(--text)">this specific browser, on this specific device</strong>. It's perfect for building and previewing your site exactly the way it will look. But visitors browsing your site from their own phone or computer won't see admin edits made here unless you later connect this panel to a real server — see the message at the end of your project zip for the simple explanation.
+        </p>
+      </div>
+
+      <div class="admin-card">
+        <h2>Quick links</h2>
+        <p class="card-desc">Jump straight to what you want to edit.</p>
+        <div class="theme-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+          <a class="add-item-btn" data-jump="panel-home" style="text-decoration:none;">Home Page Text</a>
+          <a class="add-item-btn" data-jump="panel-portfolio" style="text-decoration:none;">Portfolio Projects</a>
+          <a class="add-item-btn" data-jump="panel-services" style="text-decoration:none;">Services &amp; Pricing</a>
+          <a class="add-item-btn" data-jump="panel-awards" style="text-decoration:none;">Awards</a>
+          <a class="add-item-btn" data-jump="panel-theme" style="text-decoration:none;">Color Theme</a>
+          <a class="add-item-btn" data-jump="panel-security" style="text-decoration:none;">Change Password</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- HOME PAGE ---------- -->
+    <section class="admin-panel" id="panel-home">
+      <div class="admin-topbar">
+        <div><h1>Home Page</h1><p>Hero text, stats, and your profile photo.</p></div>
+      </div>
+
+      <form class="admin-card" id="homeForm">
+        <h2>Hero Section</h2>
+        <p class="card-desc">This is the first thing every visitor sees.</p>
+
+        <div class="admin-form-group">
+          <label for="homeEyebrow">Role / eyebrow label</label>
+          <input type="text" id="homeEyebrow" maxlength="60">
+        </div>
+        <div class="admin-form-group">
+          <label for="homeName">Your name</label>
+          <input type="text" id="homeName" maxlength="40">
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label for="homeTaglinePrefix">Tagline — plain part</label>
+            <input type="text" id="homeTaglinePrefix" maxlength="60">
+          </div>
+          <div class="admin-form-group">
+            <label for="homeTaglineHighlight">Tagline — highlighted part</label>
+            <input type="text" id="homeTaglineHighlight" maxlength="60">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label for="homeSub">Hero description</label>
+          <textarea id="homeSub" maxlength="280"></textarea>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Profile photo</label>
+          <div class="image-uploader">
+            <div class="image-preview"><img id="homePhotoPreview" src="" alt="Profile photo preview"></div>
+            <div class="upload-controls">
+              <label class="upload-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 16V4M12 4l-4 4M12 4l4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                Upload new photo
+                <input type="file" accept="image/*" id="homePhotoInput">
+              </label>
+              <span class="upload-hint">JPG or PNG, ideally under 500KB. Appears on the Home page hero.</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="admin-save-btn" id="saveHomeBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Hero Section
+        </button>
+      </form>
+
+      <form class="admin-card" id="statsForm">
+        <h2>Stats</h2>
+        <p class="card-desc">The animated counters visitors see when they scroll.</p>
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label for="statVideosInput">Videos edited</label><input type="number" id="statVideosInput" min="0"></div>
+          <div class="admin-form-group"><label for="statClientsInput">Happy clients</label><input type="number" id="statClientsInput" min="0"></div>
+        </div>
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label for="statYearsInput">Years of experience</label><input type="number" id="statYearsInput" min="0"></div>
+          <div class="admin-form-group"><label for="statRatingInput">Average rating (out of 5)</label><input type="number" id="statRatingInput" min="0" max="5" step="0.1"></div>
+        </div>
+        <button type="button" class="admin-save-btn" id="saveStatsBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Stats
+        </button>
+      </form>
+
+      <div class="admin-card">
+        <h2>Featured Work (Home page)</h2>
+        <p class="card-desc">This section automatically shows the first 6 projects from your <strong>Portfolio Projects</strong> list — manage it there and this updates too.</p>
+        <button type="button" class="admin-save-btn secondary" data-jump="panel-portfolio">Go to Portfolio Projects →</button>
+      </div>
+    </section>
+
+    <!-- ---------- PORTFOLIO ---------- -->
+    <section class="admin-panel" id="panel-portfolio">
+      <div class="admin-topbar">
+        <div><h1>Portfolio Projects</h1><p>Add, edit, or remove projects — feeds both the Portfolio page and Home page's Featured Work.</p></div>
+      </div>
+
+      <form class="admin-card" id="portfolioIntroForm">
+        <h2>Page Intro</h2>
+        <div class="admin-form-group"><label for="portfolioPageTitle">Page title</label><input type="text" id="portfolioPageTitle" maxlength="60"></div>
+        <div class="admin-form-group"><label for="portfolioPageSub">Page subtitle</label><textarea id="portfolioPageSub" maxlength="200"></textarea></div>
+        <button type="button" class="admin-save-btn" id="savePortfolioIntroBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Page Intro
+        </button>
+      </form>
+
+      <div class="admin-card">
+        <h2>Projects</h2>
+        <p class="card-desc">Each project needs a category, title, one-line description, and thumbnail.</p>
+        <div class="repeat-list" id="portfolioList"></div>
+        <button type="button" class="add-item-btn" id="addProjectBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Add New Project
+        </button>
+        <div style="margin-top:20px;">
+          <button type="button" class="admin-save-btn" id="savePortfolioBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Save All Projects
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- ABOUT ---------- -->
+    <section class="admin-panel" id="panel-about">
+      <div class="admin-topbar">
+        <div><h1>About Page</h1><p>Your story, in your words.</p></div>
+      </div>
+
+      <form class="admin-card" id="aboutForm">
+        <h2>Page Header</h2>
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label for="aboutTitleLine1">Title — line 1</label><input type="text" id="aboutTitleLine1" maxlength="40"></div>
+          <div class="admin-form-group"><label for="aboutTitleLine2">Title — line 2</label><input type="text" id="aboutTitleLine2" maxlength="40"></div>
+        </div>
+        <div class="admin-form-group"><label for="aboutPageSub">Subtitle</label><textarea id="aboutPageSub" maxlength="200"></textarea></div>
+
+        <h2 style="margin-top:8px;">My Story</h2>
+        <div class="admin-form-group"><label for="aboutStoryHeading">Section heading</label><input type="text" id="aboutStoryHeading" maxlength="60"></div>
+        <div class="admin-form-group"><label for="aboutP1">Paragraph 1</label><textarea id="aboutP1" maxlength="400"></textarea></div>
+        <div class="admin-form-group"><label for="aboutP2">Paragraph 2</label><textarea id="aboutP2" maxlength="400"></textarea></div>
+        <div class="admin-form-group"><label for="aboutQuote">Pull-quote (mission statement)</label><textarea id="aboutQuote" maxlength="220"></textarea></div>
+        <div class="admin-form-group"><label for="aboutP3">Paragraph 3</label><textarea id="aboutP3" maxlength="400"></textarea></div>
+
+        <p class="hint" style="margin-bottom:16px;">The career timeline and skill meters further down the About page stay fixed for now — let me know if you'd like those made editable too.</p>
+
+        <button type="button" class="admin-save-btn" id="saveAboutBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save About Page
+        </button>
+      </form>
+    </section>
+
+    <!-- ---------- SERVICES ---------- -->
+    <section class="admin-panel" id="panel-services">
+      <div class="admin-topbar">
+        <div><h1>Services &amp; Pricing</h1><p>Add, edit, price, or remove any service at any time.</p></div>
+      </div>
+
+      <form class="admin-card" id="servicesIntroForm">
+        <h2>Page Intro</h2>
+        <div class="admin-form-group"><label for="servicesPageTitle">Page title</label><input type="text" id="servicesPageTitle" maxlength="60"></div>
+        <div class="admin-form-group"><label for="servicesPageSub">Page subtitle</label><textarea id="servicesPageSub" maxlength="200"></textarea></div>
+        <div class="admin-form-group"><label for="servicesNote">Note below pricing grid</label><textarea id="servicesNote" maxlength="220"></textarea></div>
+        <button type="button" class="admin-save-btn" id="saveServicesIntroBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Page Intro
+        </button>
+      </form>
+
+      <div class="admin-card">
+        <h2>Services</h2>
+        <p class="card-desc">Each service has an icon, title, description, and starting price.</p>
+        <div class="repeat-list" id="servicesList"></div>
+        <button type="button" class="add-item-btn" id="addServiceBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Add New Service
+        </button>
+        <div style="margin-top:20px;">
+          <button type="button" class="admin-save-btn" id="saveServicesBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Save All Services
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- AWARDS ---------- -->
+    <section class="admin-panel" id="panel-awards">
+      <div class="admin-topbar">
+        <div><h1>Awards &amp; Achievements</h1><p>Add, edit, or remove any award at any time.</p></div>
+      </div>
+
+      <form class="admin-card" id="awardsIntroForm">
+        <h2>Page Intro</h2>
+        <div class="admin-form-group"><label for="awardsPageTitle">Page title</label><input type="text" id="awardsPageTitle" maxlength="60"></div>
+        <div class="admin-form-group"><label for="awardsPageSub">Page subtitle</label><textarea id="awardsPageSub" maxlength="200"></textarea></div>
+        <button type="button" class="admin-save-btn" id="saveAwardsIntroBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Page Intro
+        </button>
+      </form>
+
+      <div class="admin-card">
+        <h2>Achievements</h2>
+        <div class="repeat-list" id="awardsList"></div>
+        <button type="button" class="add-item-btn" id="addAwardBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Add New Achievement
+        </button>
+        <div style="margin-top:20px;">
+          <button type="button" class="admin-save-btn" id="saveAwardsBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Save All Achievements
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CONTACT & SOCIALS ---------- -->
+    <section class="admin-panel" id="panel-contact">
+      <div class="admin-topbar">
+        <div><h1>Contact &amp; Socials</h1><p>Your contact details, shown on the Contact page and in the site footer.</p></div>
+      </div>
+
+      <form class="admin-card" id="contactForm">
+        <h2>Contact Page Intro</h2>
+        <div class="admin-form-group"><label for="contactPageTitle">Page title</label><input type="text" id="contactPageTitle" maxlength="60"></div>
+        <div class="admin-form-group"><label for="contactPageSub">Line inviting visitors to reach out</label><textarea id="contactPageSub" maxlength="240"></textarea></div>
+
+        <h2 style="margin-top:8px;">Contact Details</h2>
+        <div class="admin-form-group"><label for="contactEmail">Email address</label><input type="email" id="contactEmail"></div>
+        <div class="admin-form-group"><label for="contactWhatsapp">WhatsApp note</label><input type="text" id="contactWhatsapp" placeholder="e.g. Available on request, or your number"></div>
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label for="contactInstagram">Instagram link</label><input type="url" id="contactInstagram" placeholder="https://instagram.com/yourhandle"></div>
+          <div class="admin-form-group"><label for="contactYoutube">YouTube link</label><input type="url" id="contactYoutube" placeholder="https://youtube.com/@yourchannel"></div>
+        </div>
+        <p class="hint" style="margin-bottom:16px;">These Instagram and YouTube links update the icons on every page's footer as well as the Contact page.</p>
+
+        <button type="button" class="admin-save-btn" id="saveContactBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Save Contact Info
+        </button>
+      </form>
+    </section>
+
+    <!-- ---------- THEME ---------- -->
+    <section class="admin-panel" id="panel-theme">
+      <div class="admin-topbar">
+        <div><h1>Theme</h1><p>Pick a full color theme for the entire site — changes apply instantly, everywhere.</p></div>
+      </div>
+
+      <div class="admin-card">
+        <h2>Color Themes</h2>
+        <p class="card-desc">Click a theme to apply it immediately across every page, including this Admin Panel.</p>
+        <div class="theme-grid" id="themeGrid"></div>
+      </div>
+    </section>
+
+    <!-- ---------- ACCOUNT SECURITY ---------- -->
+    <section class="admin-panel" id="panel-security">
+      <div class="admin-topbar">
+        <div><h1>Account Security</h1><p>Manage your Admin Panel login.</p></div>
+      </div>
+
+      <div class="admin-card">
+        <h2>Login status</h2>
+        <div class="security-notice" id="credsNotice"></div>
+      </div>
+
+      <form class="admin-card" id="passwordForm">
+        <h2>Change Username &amp; Password</h2>
+        <p class="card-desc">You'll need your current password to confirm this change.</p>
+
+        <div class="admin-form-group"><label for="currentPassword">Current password</label><input type="password" id="currentPassword" autocomplete="current-password"></div>
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label for="newUsername">New username</label><input type="text" id="newUsername" autocomplete="username"></div>
+          <div class="admin-form-group"><label for="newPassword">New password</label><input type="password" id="newPassword" autocomplete="new-password"></div>
+        </div>
+        <div class="admin-form-group"><label for="confirmPassword">Confirm new password</label><input type="password" id="confirmPassword" autocomplete="new-password"></div>
+
+        <p class="login-error" id="securityError" role="alert"></p>
+
+        <button type="button" class="admin-save-btn" id="saveCredsBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Update Login Details
+        </button>
+      </form>
+
+      <div class="admin-card">
+        <h2>Reset all content</h2>
+        <p class="card-desc">Clears every edit you've made and restores the site's original text, images, services, and awards in this browser. This cannot be undone.</p>
+        <button type="button" class="admin-save-btn danger" id="resetContentBtn">Reset Everything to Defaults</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="admin-toast" id="adminToast">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+  <span id="adminToastText">Saved</span>
+</div>
+
+<script src="../js/icons.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
